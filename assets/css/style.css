@@ -1,0 +1,71 @@
+
+ .content:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    
+    display: block;
+    background-image: url('../images/periodictable.png');
+    width: 100%;
+    height: 800px;
+    
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+  }
+  
+  .shadow {
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+    background-color: navy;
+    background: linear-gradient(navy, gray);
+    margin-left: 200px;
+   margin-right: 200px;
+   height: 600px;
+   border-radius: 10px;
+ }
+  .content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+h1 {
+    font-size: 50px;
+    font-family: 'Ribeye Marrow', cursive;
+    text-align: center;
+    color: white;
+   padding-top: 20px;
+}
+
+button {
+  background-color: white;
+  border: black;
+  color: navy;
+  padding: 15px 32px;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: inline-block;
+  font-size: 30px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 15px;
+  margin-top: 50px;
+    
+}
+
+#timer, h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  padding: 100px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trivia Game</title>
+
+    <meta charset="utf-8" />
+    <!--Viewport for media queries-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Linking CSS reset-->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!--Linking CSS Stylesheet-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Linking Googlefonts-->
+    <link href="https://fonts.googleapis.com/css?family=Ribeye+Marrow" rel="stylesheet">
+    <!--Linking jquery-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <container>
+            <br>
+            <br>
+            <br>
+            <div class="shadow">
+                <div class="bigbox">
+                    <h1>Take this quiz periodically!</h1>
+                    <br>
+                    <!--start button will disappear after button is pressed-->
+                    <button id="start">Start</button>
+                    <div id="rules">
+                        <h2>After you press start, you have 30 seconds to answer each question about the periodic table. Good luck!</h2>
+                    </div>
+                    <!--Timer and questions will appear here once started-->
+                    <!--Timer-->
+                    <div class="hidden">
+                        <div id="timer">
+                            <p>Time left: 10 sec</p>
+                        </div>
+                        <!--Question will appear here once started-->
+                        <div id="current-question"></div>
+                        <!--Answer will appear after 30 seconds-->
+                        <div id="current-answer"></div>
+                        <div id="answer-message"></div>
+                        <img id="answer-image">
+                        <!--After all 5 questions and answers, the scoreboard will appear-->
+                        <div id="correct-answers"></div>
+                        <div id="incorrect-answers"></div>
+                        <button id="play-again">Play Again</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </container>
+    </div>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
