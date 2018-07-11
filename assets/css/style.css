@@ -45,13 +45,12 @@ h1 {
    padding-top: 20px;
 }
 
-button {
+button, .next-question {
   background-color: white;
   border: black;
   color: navy;
   padding: 15px 32px;
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: inline-block;
   font-size: 30px;
   margin: 0 auto;
@@ -62,7 +61,6 @@ button {
 }
 
 h2, #rules {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
   color: white;
   font-size: 35px;
@@ -71,7 +69,6 @@ h2, #rules {
 }
 
 #timer, h3, #answers {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
   color: white;
   font-size: 25px;
@@ -84,16 +81,33 @@ h2, #rules {
   color: navy;
   width: 400px;
   text-align: center;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: inline-block;
   font-size: 30px;
   margin: 0 auto;
   display: block;
   border-radius: 15px;
   margin-top: 20px;
-
 }
 
 .answer-button:hover {
   background-color: lightblue;
+}
+.answer-button, h2, h3, #timer, #answers, #rules, button {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h4, #answer-message {
+  font-family: 'Ribeye Marrow', cursive;
+  text-align: center;
+  color: lightgoldenrodyellow;
+  font-size: 40px;
+}
+
+img {
+  display: inline-block;
+  margin: 0 auto;
+  display: block;
+  padding: 20px;
+  width: 150px;
+  height: 150px;
 }
