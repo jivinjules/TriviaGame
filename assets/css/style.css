@@ -70,10 +70,30 @@ h2, #rules {
   
 }
 
-#timer, h3 {
+#timer, h3, #answers {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 25px;
   padding: 10px;
+}
+
+.answer-button {
+  background-color: lightgoldenrodyellow;
+  border: black;
+  color: navy;
+  width: 400px;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: inline-block;
+  font-size: 30px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 15px;
+  margin-top: 20px;
+
+}
+
+.answer-button:hover {
+  background-color: lightblue;
 }

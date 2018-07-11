@@ -6,7 +6,7 @@ var questions = [{
     rightAnswer: 1,
     image: "images/tungsten.jpg",
 }, {
-    text: "How valence electrons does one atom of sodium have?",
+    text: "How many valence electrons does one atom of sodium have?",
     choices: ["1", "2", "3", "4"],
     rightAnswer: 0,
     image: "images/sodium.jpg",
@@ -60,34 +60,38 @@ function questionAppears() {
     $('#answer-message').hide();
     $('#answer-image').hide();
     $('#current-question').html('<h3>' + questions[currentQuestion].text + '</h3>');
-    for (var i = 0; i < 4; i++) {
-        var answers = $('<div>');
-        answers.text(questions[currentQuestion].choices[i]);
-        answers.attr({ 'data-index': i });
-        answers.addClass('thisChoice');
-        $('.choices').append(answers);
-    }
 
+    //Answer choices appear as buttons
+
+    $('#answer-list1').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[0] + '">' + questions[this.currentQuestion].choices[0] + '</button>');
+    $('#answer-list2').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[1] + '">' + questions[this.currentQuestion].choices[1] + '</button>');
+    $('#answer-list3').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[2] + '">' + questions[this.currentQuestion].choices[2] + '</button>');
+    $('#answer-list4').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[3] + '">' + questions[this.currentQuestion].choices[3] + '</button>');
 }
+function nextQuestion(){
+    currentQuestion++;
+    questionAppears();
+  }
+
 //Timer is started
-//Timer stops if it hits zero
-//Message appears if the player runs out of time
+
 function startClock() {
     timer = 20;
     $('#timer').html('<h3>Time Left: ' + timer + '</h3>');
     intervalID = setInterval(decrement, 1000);
 }
 //Timer counts down from 20 to zero
+//Timer stops if it hits zero
+//Message appears if the player runs out of time
 function decrement() {
     timer--;
     $('#timer').html('<h3>Time Left: ' + timer + '</h3>');
     if (timer === 0) {
         clearInterval(intervalID);
-        $('#timer').html('<h3>' + "Well that sucks. You ran out of time" + '</h3>');
+        $('#timer').html('<h3>' + "Well, that sucks. You ran out of time." + '</h3>');
+        nextQuestion();
     }
 }
-//Answer choices appear
-
 
 //When the question is answered, the image of the answer appears in the image tag
 function displayImage() {
