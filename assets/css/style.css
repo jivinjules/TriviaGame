@@ -5,7 +5,6 @@
     left: 0;
     right: 0;
     z-index: -1;
-    
     display: block;
     background-image: url('../images/periodictable.png');
     width: 100%;
@@ -62,10 +61,19 @@ button {
     
 }
 
-#timer, h2 {
+h2, #rules {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
   color: white;
-  font-size: 40px;
-  padding: 100px;
+  font-size: 35px;
+  padding: 50px;
+  
+}
+
+#timer, h3 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
 }
