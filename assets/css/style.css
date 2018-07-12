@@ -75,7 +75,7 @@ h2, #rules {
   padding: 10px;
 }
 
-.answer-button {
+.answer-button, .play-again-button {
   background-color: lightgoldenrodyellow;
   border: black;
   color: navy;
@@ -110,4 +110,24 @@ img {
   padding: 20px;
   width: 150px;
   height: 150px;
+}
+
+/*Media Queries for iphone screens*/
+@media screen and (max-width:768px) {
+  .shadow {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  h2, h3, h4 {
+    font-size: 20px;
+  }
+  .answer-button, .play-again-button {
+    width: 200px;
+    margin-top: 5px;
+    font-size: 20px;
+    
+  }
 }

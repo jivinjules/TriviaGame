@@ -16,7 +16,7 @@ var questions = [{
     rightAnswer: "Xenon",
     image: "assets/images/xenon.jpg",
 }, {
-    text: "How many protons is in one atom of Fluorine?",
+    text: "How many protons are in one atom of Fluorine?",
     choices: [2, 9, 17, 18],
     rightAnswer: 9,
     image: "assets/images/fluorine.png",
@@ -37,9 +37,12 @@ var userChoice;
 var timeRemaining;
 var unansweredQuestions;
 
-//Event Listener
+//Event Listeners for clicked buttons
 $(document).on('click', '.answer-button', function (e) {
     answerclicked(e);
+});
+$(document).on('click', '.play-again-button', function () {
+    playAgain();
 });
 
 //////HUGE LIST OF ALL THE FUNCTIONS
@@ -56,7 +59,6 @@ function startGame() {
 }
 //A new Question Appears
 function questionAppears() {
-    $('#current-answer').hide();
     $('#current-question').html('<h3>' + questions[currentQuestion].text + '</h3>');
 
     //Answer choices appear as buttons
@@ -78,6 +80,17 @@ answerclicked = function (e) {
         clearInterval(intervalID);
         wrongOrNoAnswer();
     }
+}
+
+//Activates play again function at the end of the game
+function playAgain() {
+    $('#current-question').show();
+    correctQuestions = 0;
+    incorrectQuestions = 0;
+    currentQuestion = 0;
+    questionAppears();
+    startClock();
+    answerclicked();
 }
 
 //Pulls up the next question
@@ -118,10 +131,19 @@ function wrongOrNoAnswer() {
     $('#triva-area3').html("<img src=" + questions[currentQuestion].image + ">");
     $('#triva-area4').empty();
     if (currentQuestion === questions.length - 1) {
-        setTimeout(results, 5 * 1000);
+        setTimeout(finalPage, 4 * 1000);
     } else {
-        setTimeout(nextQuestion, 5 * 1000);
+        setTimeout(nextQuestion, 4 * 1000);
     }
+}
+
+function finalPage() {
+    $('#current-question').hide();
+    $('#timer').html('<h3>' + "Thanks for playing! Here are your results:" + '</h3>');
+    $('#triva-area1').html('<h4>' + "You got " + correctQuestions + " correct." + '</h4>');
+    $('#triva-area2').html('<h4>' + "You got " + incorrectQuestions + " wrong." + '<h4>')
+    $('#triva-area3').html('<button class="play-again-button" id="button">' + "Play Again?" + '</button>');
+    $('#triva-area4').empty();
 }
 
 //If the user selects the correct answer, the messages change
@@ -135,13 +157,13 @@ function rightAnswerClicked() {
     $('#triva-area3').html("<img src=" + questions[currentQuestion].image + ">");
     $('#triva-area4').empty();
     if (currentQuestion === questions.length - 1) {
-        setTimeout(results, 5 * 1000);
+        setTimeout(finalPage, 4 * 1000);
     } else {
-        setTimeout(nextQuestion, 5 * 1000);
+        setTimeout(nextQuestion, 4 * 1000);
     }
 }
 
-
+//Document ready...press start to get the game activated
 $(document).ready(function () {
     //This hides the start button
     $('#start').click(function () {
@@ -149,6 +171,7 @@ $(document).ready(function () {
         questionAppears();
         startClock();
         answerclicked();
+
     });
 
 })
