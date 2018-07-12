@@ -7,8 +7,8 @@ var questions = [{
     image: "assets/images/tungsten.jpg",
 }, {
     text: "How many valence electrons does one atom of sodium have?",
-    choices: ["1", "2", "3", "4"],
-    rightAnswer: "1",
+    choices: ["one", "two", "three", "four"],
+    rightAnswer: "one",
     image: "assets/images/sodium.jpg",
 }, {
     text: "Which of the following is a noble gas?",
@@ -17,8 +17,8 @@ var questions = [{
     image: "assets/images/xenon.jpg",
 }, {
     text: "How many protons is in one atom of Fluorine?",
-    choices: ["2", "9", "17", "18"],
-    rightAnswer: "9",
+    choices: [2, 9, 17, 18],
+    rightAnswer: 9,
     image: "assets/images/fluorine.png",
 }, {
     text: "Who organized the first periodic table?",
@@ -38,9 +38,9 @@ var timeRemaining;
 var unansweredQuestions;
 
 //Event Listener
-$(document).on('click', '.answer-button', function(e) {
-   answerclicked(e);
-  });
+$(document).on('click', '.answer-button', function (e) {
+    answerclicked(e);
+});
 
 //////HUGE LIST OF ALL THE FUNCTIONS
 //startGame
@@ -69,15 +69,16 @@ function questionAppears() {
 }
 
 //sets up listener event for when the user clicks and answer and then checks it against the array
-answerclicked = function(e) {
-   
+answerclicked = function (e) {
+
     if ($(e.target).data("name") === questions[currentQuestion].rightAnswer) {
+        clearInterval(intervalID);
         rightAnswerClicked();
     } else {
+        clearInterval(intervalID);
         wrongOrNoAnswer();
     }
 }
-
 
 //Pulls up the next question
 function nextQuestion() {
@@ -90,11 +91,11 @@ function nextQuestion() {
 //Timer is started
 
 function startClock() {
-    timer = 3;
+    timer = 15;
     $('#timer').html('<h3>Time Left: ' + timer + '</h3>');
     intervalID = setInterval(decrement, 1000);
 }
-//Timer counts down from 20 to zero
+//Timer counts down from 15 to zero
 //Timer stops if it hits zero
 //Message appears if the player runs out of time
 function decrement() {
@@ -147,7 +148,7 @@ $(document).ready(function () {
         startGame();
         questionAppears();
         startClock();
-       answerclicked();
+        answerclicked();
     });
 
 })
