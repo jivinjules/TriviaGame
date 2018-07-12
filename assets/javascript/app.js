@@ -9,34 +9,38 @@ var questions = [{
     text: "How many valence electrons does one atom of sodium have?",
     choices: ["1", "2", "3", "4"],
     rightAnswer: "1",
-    image: "../images/sodium.jpg",
+    image: "assets/images/sodium.jpg",
 }, {
     text: "Which of the following is a noble gas?",
     choices: ["Chlorine", "Oxygen", "Nitrogen", "Xenon"],
     rightAnswer: "Xenon",
-    image: "../images/xenon.jpg",
+    image: "assets/images/xenon.jpg",
 }, {
     text: "How many protons is in one atom of Fluorine?",
     choices: ["2", "9", "17", "18"],
     rightAnswer: "9",
-    image: "../images/fluorine.png",
+    image: "assets/images/fluorine.png",
 }, {
     text: "Who organized the first periodic table?",
     choices: ["Nicolas Copernicus", "Gregor Mendel", "Dmitri Mendeleev", "Isaac Newton"],
     rightAnswer: "Dmitri Mendeleev",
-    image: "../images/mendeleev.jpg",
+    image: "assets/images/mendeleev.jpg",
 }];
 
 //Global variables
 var currentQuestion;
-var currentAnswer;
-var userSelection;
 var intervalID;
 var timer;
 var correctQuestions;
 var incorrectQuestions;
 var userChoice;
 var timeRemaining;
+var unansweredQuestions;
+
+//Event Listener
+$(document).on('click', '.answer-button', function(e) {
+   answerclicked(e);
+  });
 
 //////HUGE LIST OF ALL THE FUNCTIONS
 //startGame
@@ -48,6 +52,7 @@ function startGame() {
     correctQuestions = 0;
     incorrectQuestions = 0;
     currentQuestion = 0;
+
 }
 //A new Question Appears
 function questionAppears() {
@@ -56,15 +61,30 @@ function questionAppears() {
 
     //Answer choices appear as buttons
 
-    $('#answer-list1').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[0] + '">' + questions[this.currentQuestion].choices[0] + '</button>');
-    $('#answer-list2').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[1] + '">' + questions[this.currentQuestion].choices[1] + '</button>');
-    $('#answer-list3').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[2] + '">' + questions[this.currentQuestion].choices[2] + '</button>');
-    $('#answer-list4').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[3] + '">' + questions[this.currentQuestion].choices[3] + '</button>');
+    $('#triva-area1').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[0] + '">' + questions[this.currentQuestion].choices[0] + '</button>');
+    $('#triva-area2').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[1] + '">' + questions[this.currentQuestion].choices[1] + '</button>');
+    $('#triva-area3').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[2] + '">' + questions[this.currentQuestion].choices[2] + '</button>');
+    $('#triva-area4').html('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].choices[3] + '">' + questions[this.currentQuestion].choices[3] + '</button>');
 
 }
+
+//sets up listener event for when the user clicks and answer and then checks it against the array
+answerclicked = function(e) {
+   
+    if ($(e.target).data("name") === questions[currentQuestion].rightAnswer) {
+        rightAnswerClicked();
+    } else {
+        wrongOrNoAnswer();
+    }
+}
+
+
+//Pulls up the next question
 function nextQuestion() {
     currentQuestion++;
     questionAppears();
+    startClock();
+
 }
 
 //Timer is started
@@ -89,45 +109,35 @@ function decrement() {
 
 //If the user selects the wrong answer, the correct answer appears
 //An image of the correct answer appears
-//A next question button appears
+//After 5 seconds, the next question appears
 function wrongOrNoAnswer() {
-    $('#answer-list1').hide();
-    $('#answer-list2').hide();
-    $('#answer-list3').hide();
-    $('#answer-list4').hide();
-    $('#answer-list1').empty();
-    $('#answer-list2').empty();
-    $('#answer-list3').empty();
-    $('#answer-list4').empty();
     incorrectQuestions++;
-    $('#answer-message').html('<h4>' + "The correct answer was " + questions[currentQuestion].rightAnswer + '</h4>');
-    $('#right-or-wrong').html('<h4>' + "Did you even pay attention in chemistry?" + '<h4>')
-    $('#answer-image').html("<img src=" + questions[currentQuestion].image + ">");
-    if (currentQuestion === questions.length - 1){
-        setTimeout(results, 3 * 1000);
-      } else {
-        setTimeout(nextQuestion, 3 * 1000);
-      }
+    $('#triva-area1').html('<h4>' + "The correct answer was " + questions[currentQuestion].rightAnswer + '</h4>');
+    $('#triva-area2').html('<h4>' + "Did you even pay attention in chemistry?" + '<h4>')
+    $('#triva-area3').html("<img src=" + questions[currentQuestion].image + ">");
+    $('#triva-area4').empty();
+    if (currentQuestion === questions.length - 1) {
+        setTimeout(results, 5 * 1000);
+    } else {
+        setTimeout(nextQuestion, 5 * 1000);
+    }
 }
 
+//If the user selects the correct answer, the messages change
+//An image of the correct answer appears
+//After 5 seconds, the next question appears
 function rightAnswerClicked() {
-    $('#answer-list1').hide();
-    $('#answer-list2').hide();
-    $('#answer-list3').hide();
-    $('#answer-list4').hide();
-    $('#answer-list1').empty();
-    $('#answer-list2').empty();
-    $('#answer-list3').empty();
-    $('#answer-list4').empty();
+
     correctQuestions++;
-    $('#answer-message').html('<h4>' + "GOOD JOB! The correct answer was " + questions[currentQuestion].rightAnswer + '</h4>');
-    $('#right-or-wrong').html('<h4>' + "Walter White would be proud." + '<h4>')
-    $('#answer-image').html("<img src=" + questions[currentQuestion].image + ">");
-    if (currentQuestion === questions.length - 1){
-        setTimeout(results, 3 * 1000);
-      } else {
-        setTimeout(nextQuestion, 3 * 1000);
-      }
+    $('#triva-area1').html('<h4>' + "GOOD JOB! The correct answer was " + questions[currentQuestion].rightAnswer + '</h4>');
+    $('#triva-area2').html('<h4>' + "Walter White would be proud." + '<h4>')
+    $('#triva-area3').html("<img src=" + questions[currentQuestion].image + ">");
+    $('#triva-area4').empty();
+    if (currentQuestion === questions.length - 1) {
+        setTimeout(results, 5 * 1000);
+    } else {
+        setTimeout(nextQuestion, 5 * 1000);
+    }
 }
 
 
@@ -137,6 +147,7 @@ $(document).ready(function () {
         startGame();
         questionAppears();
         startClock();
+       answerclicked();
     });
 
 })
