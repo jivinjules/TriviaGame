@@ -176,36 +176,3 @@ $(document).ready(function () {
 
 })
 
-
-
-
-// var cuisines = [{
-//     name: "Mexican", 
-//     cuisineID: "",
-// },{
-//     name: "Italian",
-//     cuisineID: "",
-// },{
-//     name: "Chinese", 
-//     cuisineID: "25",
-// }, {
-//     name: "Barbeque", 
-//     cuisineID: "193",
-// }, {
-//     name: "Hamburgers", 
-//     cuisineID: "",
-// },{
-//     name: "Mediterranean", 
-//     cuisineID: "",
-// },{
-//     name: "Wings", 
-//     cuisineID: "",
-// },{
-//     name:"Thai", 
-//     cuisineID: "",
-// },{
-//     name:"Pizza",
-//     cuisineID: "",
-// }];
-
-
